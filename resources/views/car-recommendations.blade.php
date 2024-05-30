@@ -61,6 +61,7 @@
             <table class="table table-striped" id="table1">
                 <thead>
                     <tr>
+                        <th>No</th>
                         <th>ID Units</th>
                         <th>Nama Mobil</th>
                         <th>Merk Mobil</th>
@@ -72,6 +73,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                    $counter = 1;
+                    @endphp
                     <tr>
                         <td></td>
                         <td></td>
@@ -81,6 +85,10 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        @php
+                        $counter++;
+                    @endphp
                 </tbody>
             </table>
         </div>

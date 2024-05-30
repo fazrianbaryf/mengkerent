@@ -59,10 +59,10 @@
                         <span>Car Units</span>
                     </a>
                 </li>
-                <li class="sidebar-item {{ ($title === "Car Recomendations") ? 'active' : ''}}">
-                    <a href="/car-recommend" class='sidebar-link'>
+                <li class="sidebar-item {{ ($title === "Car Recommendations") ? 'active' : ''}}">
+                    <a href="/car-recommendations" class='sidebar-link'>
                         <i class="bi bi-car-front"></i>
-                        <span>Car Recomendations</span>
+                        <span>Car Recommendations</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ ($title === "Data Promo") ? 'active' : ''}}">

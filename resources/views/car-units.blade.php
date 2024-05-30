@@ -30,93 +30,86 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="form form-vertical">
+                                <form class="form form-vertical" action="{{ route('car.addCar') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-12">
-                                                <label for="first-name-vertical">Car Photo</label>
+                                                <label for="car_photo">Car Photo</label>
                                                 <div class="form-group">
-                                                    <input type="file" class="basic-filepond">
+                                                    <input name="car_photo" type="file" class="basic-filepond">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="first-name-vertical">Nama Mobil</label>
-                                                    <input type="text" id="first-name-vertical" class="form-control"
-                                                        name="fname" placeholder="Masukan nama mobil">
+                                                    <label for="nama_mobil">Nama Mobil</label>
+                                                    <input type="text" id="nama_mobil" class="form-control" name="nama_mobil" placeholder="Masukan nama mobil">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="first-name-vertical">ID Units</label>
-                                                    <input type="text" id="first-name-vertical" class="form-control"
-                                                        name="fname" placeholder="Masukan nama mobil">
+                                                    <label for="plat_mobil">Plat Mobil</label>
+                                                    <input type="text" id="plat_mobil" class="form-control" name="plat_mobil" placeholder="Masukan Plat Mobil">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="email-id-vertical">Merk Mobil</label>
-                                                    <input type="email" id="email-id-vertical" class="form-control"
-                                                        name="email-id" placeholder="Masukan merk mobil">
+                                                    <label for="merk_mobil">Merk Mobil</label>
+                                                    <input type="text" id="merk_mobil" class="form-control" name="merk_mobil" placeholder="Masukan merk mobil">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="password-vertical">Jenis Mobil</label>
-                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                                        <option selected>Pilih Jenis Mobil ...</option>
-                                                        <option value="mvp">MVP</option>
-                                                        <option value="suv">SUV</option>
-                                                        <option value="sedan">Sedan</option>
-                                                      </select>
+                                                    <label for="tahun_mobil">Tahun</label>
+                                                    <input type="number" id="tahun_mobil" class="form-control" name="tahun_mobil" placeholder="Masukan tahun kendaraan">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="password-vertical">Tahun</label>
-                                                    <input type="number" id="password-vertical" class="form-control"
-                                                        name="contact" placeholder="Masukan tahun kendaraan">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="password-vertical">Transmisi</label>
-                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                                    <label for="transmisi">Transmisi</label>
+                                                    <select class="form-select" id="transmisi" name="transmisi">
                                                         <option selected>Pilih Transmisi ...</option>
                                                         <option value="matic">Matic</option>
                                                         <option value="manual">Manual</option>
-                                                      </select>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="password-vertical">Harga Mobil 6 Jam</label>
-                                                    <input type="number" id="password-vertical" class="form-control"
-                                                        name="contact" placeholder="Masukan Harga Mobil">
+                                                    <label for="car_category">Kategori Mobil</label>
+                                                    <select class="form-select" id="car_category" name="car_category">
+                                                        <option selected>Pilih Kategori Mobil ...</option>
+                                                        <option value="suv">SUV</option>
+                                                        <option value="mvp">MVP</option>
+                                                        <option value="sedan">Sedan</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="password-vertical">Harga Mobil 12 Jam</label>
-                                                    <input type="number" id="password-vertical" class="form-control"
-                                                        name="contact" placeholder="Masukan Harga Mobil">
+                                                    <label for="price_6jam">Harga Mobil 6 Jam</label>
+                                                    <input type="number" id="price_6jam" class="form-control" name="price_6jam" placeholder="Masukan Harga Mobil">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="password-vertical">Harga Mobil 24 Jam / Per-hari</label>
-                                                    <input type="number" id="password-vertical" class="form-control"
-                                                        name="contact" placeholder="Masukan Harga Mobil">
+                                                    <label for="price_12jam">Harga Mobil 12 Jam</label>
+                                                    <input type="number" id="price_12jam" class="form-control" name="price_12jam" placeholder="Masukan Harga Mobil">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="price_24jam">Harga Mobil 24 Jam / Per-hari</label>
+                                                    <input type="number" id="price_24jam" class="form-control" name="price_24jam" placeholder="Masukan Harga Mobil">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success me-1 mb-1">Submit</button>
-                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
-                                </div>
-                            </form>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success me-1 mb-1">Submit</button>
+                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                    </div>
+                                </form>
                         </div>
                     </div>
                 </div>
@@ -126,29 +119,156 @@
             <table class="table table-striped" id="table1">
                 <thead>
                     <tr>
-                        <th>ID Units</th>
+                        <th>No</th>
                         <th>Nama Mobil</th>
+                        <th>Plat Mobil</th>
                         <th>Merk Mobil</th>
-                        <th>Jenis</th>
-                        <th>Tahun</th>
+                        <th>Car Category</th>
                         <th>Transmisi</th>
+                        <th>Tahun</th>
                         <th>Foto</th>
                         <th>Harga per hari</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    @php
+                    $counter = 1;
+                    @endphp
+                    @foreach ($cars as $car)
+                        <tr>
+                            <td>{{ $counter }}</td>
+                            <td>{{ $car->nama_mobil }}</td>
+                            <td>{{ $car->plat_mobil }}</td>
+                            <td>{{ $car->merk_mobil }}</td>
+                            <td>{{ $car->car_category }}</td>
+                            <td>{{ $car->transmisi }}</td>
+                            <td>{{ $car->tahun_mobil }}</td>
+                            <td>
+                                @if($car->car_photo)
+                                    <img src="{{ asset('images/' . $car->car_photo) }}" alt="Car Photo" width="100px" height="70px">
+                                @else
+                                    No Image
+                                @endif
+                            </td>
+                            <td>{{ $car->price_24jam }}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCarModal{{ $car->id }}">Edit</button>
+                                <form action="{{ route('cars.destroy', $car->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                            
+
+                        <!-- Modal Edit Car -->
+                        <div class="modal fade" id="editCarModal{{ $car->id }}" tabindex="-1" aria-labelledby="editCarModal{{ $car->id }}Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editCarModal{{ $car->id }}Label">Edit Car</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ route('cars.update', $car->id) }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT') <!-- Mengganti metode POST dengan PUT -->
+
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <label for="car_photo">Car Photo</label>
+                                                        <div class="form-group">
+                                                            @if($car->car_photo)
+                                                                <img src="{{ asset('images/' . $car->car_photo) }}" alt="Car Photo" width="100">
+                                                                <p>Current Photo: {{ $car->car_photo }}</p>
+                                                            @else
+                                                                <p>No Photo</p>
+                                                            @endif
+                                                            <input name="car_photo" type="file" class="basic-filepond">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="nama_mobil">Nama Mobil</label>
+                                                            <input type="text" id="nama_mobil" class="form-control" name="nama_mobil" value="{{ $car->nama_mobil }}" placeholder="Masukan nama mobil">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="plat_mobil">Plat Mobil</label>
+                                                            <input type="text" id="plat_mobil" class="form-control" name="plat_mobil" value="{{ $car->plat_mobil }}" placeholder="Masukan Plat Mobil">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="merk_mobil">Merk Mobil</label>
+                                                            <input type="text" id="merk_mobil" class="form-control" name="merk_mobil" value="{{ $car->merk_mobil }}" placeholder="Masukan merk mobil">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="tahun_mobil">Tahun</label>
+                                                            <input type="number" id="tahun_mobil" class="form-control" name="tahun_mobil" value="{{ $car->tahun_mobil }}" placeholder="Masukan tahun kendaraan">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="transmisi">Transmisi</label>
+                                                            <select class="form-select" id="transmisi" name="transmisi">
+                                                                <option selected>{{ $car->transmisi }}</option>
+                                                                <option value="matic">Matic</option>
+                                                                <option value="manual">Manual</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="car_category">Kategori Mobil</label>
+                                                            <select class="form-select" id="car_category" name="car_category">
+                                                                <option selected>{{ $car->car_category }}</option>
+                                                                <option value="suv">SUV</option>
+                                                                <option value="mvp">MVP</option>
+                                                                <option value="sedan">Sedan</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="price_6jam">Harga Mobil 6 Jam</label>
+                                                            <input type="number" id="price_6jam" class="form-control" name="price_6jam" value="{{ $car->price_6jam }}" placeholder="Masukan Harga Mobil">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="price_12jam">Harga Mobil 12 Jam</label>
+                                                            <input type="number" id="price_12jam" class="form-control" name="price_12jam" value="{{ $car->price_12jam }}" placeholder="Masukan Harga Mobil">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="price_24jam">Harga Mobil 24 Jam / Per-hari</label>
+                                                            <input type="number" id="price_24jam" class="form-control" name="price_24jam" value="{{ $car->price_24jam }}" placeholder="Masukan Harga Mobil">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-success me-1 mb-1">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                                                      
+                        </tr>
+                    @php
+                        $counter++;
+                    @endphp
+                    @endforeach
                 </tbody>
             </table>
         </div>
