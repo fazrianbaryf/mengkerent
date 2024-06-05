@@ -4,9 +4,9 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
                     <a href="/dashboard" style="display: flex; align-items: center; text-decoration: none;">
-                        <img src="{{ asset('theme/dist/assets/images/logo/tes.svg')}}" alt="Logo"
+                        <img src="{{ asset('theme/dist/assets/images/logo/mengkerent.png')}}" alt="Logo"
                             style="width: 50px; height: auto; margin-right: 10px;">
-                        <span style="font-size: 18px;">Growigo.id</span>
+                        <span style="font-size: 18px;">Mengkerent.id</span>
                     </a>
                 </div>
             </div>
@@ -59,10 +59,10 @@
                         <span>Car Units</span>
                     </a>
                 </li>
-                <li class="sidebar-item {{ ($title === "Car Recomendations") ? 'active' : ''}}">
-                    <a href="/car-recommend" class='sidebar-link'>
+                <li class="sidebar-item {{ ($title === "Car Recommendations") ? 'active' : ''}}">
+                    <a href="/car-recommendations" class='sidebar-link'>
                         <i class="bi bi-car-front"></i>
-                        <span>Car Recomendations</span>
+                        <span>Car Recommendations</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ ($title === "Data Promo") ? 'active' : ''}}">

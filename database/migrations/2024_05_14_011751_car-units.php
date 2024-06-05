@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('car-units', function (Blueprint $table) {
             $table->id();
-            $table->string('id_units', 50);
             $table->string('nama_mobil', 100);
+            $table->string('plat_mobil', 50);
             $table->string('merk_mobil', 50);
-            $table->string('jenis_mobil', 50);
             $table->integer('tahun_mobil');
             $table->enum('transmisi',['matic','manual']);
             $table->enum('car_category',['suv','mvp','sedan']);
@@ -26,7 +25,8 @@ return new class extends Migration
             $table->integer('price_6jam');
             $table->integer('price_12jam');
             $table->integer('price_24jam');
-            $table->date('expired_at');
+            $table->string('syarat_ketentuan', 500);
+            $table->date('expired_at')->nullable();
             $table->timestamps();
         });
     }
