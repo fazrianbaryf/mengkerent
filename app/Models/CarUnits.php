@@ -21,6 +21,7 @@ class CarUnits extends Model
         'price_6jam',
         'price_12jam',
         'price_24jam',
+        'syarat_ketentuan',
     ];
     
     public function getCarCategoryAttribute($value)
@@ -41,5 +42,10 @@ class CarUnits extends Model
     public function getTransmisiAttribute($value)
     {
         return strtoupper($value);
+    }
+
+    public function recommends()
+    {
+        return $this->hasMany(CarRecomends::class, 'car_recomend_id');
     }
 }

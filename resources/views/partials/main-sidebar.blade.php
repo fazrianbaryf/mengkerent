@@ -4,9 +4,9 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
                     <a href="/dashboard" style="display: flex; align-items: center; text-decoration: none;">
-                        <img src="{{ asset('theme/dist/assets/images/logo/tes.svg')}}" alt="Logo"
+                        <img src="{{ asset('theme/dist/assets/images/logo/mengkerent.png')}}" alt="Logo"
                             style="width: 50px; height: auto; margin-right: 10px;">
-                        <span style="font-size: 18px;">Growigo.id</span>
+                        <span style="font-size: 18px;">Mengkerent.id</span>
                     </a>
                 </div>
             </div>

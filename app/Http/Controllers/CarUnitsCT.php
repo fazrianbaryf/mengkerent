@@ -20,6 +20,7 @@ class CarUnitsCT extends Controller
             'price_6jam' => 'required|integer',
             'price_12jam' => 'required|integer',
             'price_24jam' => 'required|integer',
+            'syarat_ketentuan' => 'required|string|max:500',
         ]);
 
         // Mengupload file gambar
@@ -39,6 +40,7 @@ class CarUnitsCT extends Controller
             'price_6jam' => $request->price_6jam,
             'price_12jam' => $request->price_12jam,
             'price_24jam' => $request->price_24jam,
+            'syarat_ketentuan' => $request->syarat_ketentuan,
         ]);
 
         return redirect()->back()->with('success', 'Car unit added successfully.');
@@ -58,6 +60,7 @@ class CarUnitsCT extends Controller
             $car->price_6jam = $request->input('price_6jam');
             $car->price_12jam = $request->input('price_12jam');
             $car->price_24jam = $request->input('price_24jam');
+            $car->syarat_ketentuan = $request->input('syarat_ketentuan');
 
             // Handle file upload for car photo
             if ($request->hasFile('car_photo')) {

@@ -3,6 +3,7 @@
 use App\Http\Controllers\CarUnitsCT;
 use App\Http\Controllers\UserLoginCT;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarRecomendsCT;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
             "title" => "Car Recommendations",
         ]);
     });
+    Route::get('/car-recommendations', [CarRecomendsCT::class, 'index'])->name('car_recomend.index');
+    Route::post('/car-recommendations/add', [CarRecomendsCT::class, 'addCarRecomend'])->name('car_recomend.add');
+    Route::delete('/car-recommendations/remove/{id}', [CarRecomendsCT::class, 'removeCarRecomend'])->name('car_recomend.remove');
 
 
 /** End Routes Car Recommend **/
@@ -95,8 +99,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
         ]);
     });
 
+
 /** End Routes Order Histori **/
 
 
     Route::post('/logout', [UserLoginCT::class, 'logout'])->name('logout');
+
 });
