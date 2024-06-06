@@ -17,6 +17,9 @@ class CarUnitsCT extends Controller
             'tahun_mobil' => 'required|integer',
             'transmisi' => 'required|in:matic,manual',
             'car_category' => 'required|in:suv,mvp,sedan',
+            'seats' => 'required|integer',
+            'kapasitas_mesin' => 'required|string|max:50',
+            'warna' => 'required|string|max:50',
             'price_6jam' => 'required|integer',
             'price_12jam' => 'required|integer',
             'price_24jam' => 'required|integer',
@@ -37,6 +40,9 @@ class CarUnitsCT extends Controller
             'tahun_mobil' => $request->tahun_mobil,
             'transmisi' => $request->transmisi,
             'car_category' => $request->car_category,
+            'seats' => $request->seats,
+            'kapasitas_mesin' => $request->kapasitas_mesin,
+            'warna' => $request->warna,
             'price_6jam' => $request->price_6jam,
             'price_12jam' => $request->price_12jam,
             'price_24jam' => $request->price_24jam,
@@ -57,6 +63,9 @@ class CarUnitsCT extends Controller
             $car->tahun_mobil = $request->input('tahun_mobil');
             $car->transmisi = $request->input('transmisi');
             $car->car_category = $request->input('car_category');
+            $car->seats = $request->input('seats');
+            $car->kapasitas_mesin = $request->input('kapasitas_mesin');
+            $car->warna = $request->input('warna');
             $car->price_6jam = $request->input('price_6jam');
             $car->price_12jam = $request->input('price_12jam');
             $car->price_24jam = $request->input('price_24jam');

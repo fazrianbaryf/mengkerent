@@ -66,6 +66,12 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
+                                                    <label for="seats">Seats</label>
+                                                    <input type="number" id="seats" class="form-control" name="seats" placeholder="Masukan jumlah kursi">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
                                                     <label for="transmisi">Transmisi</label>
                                                     <select class="form-select" id="transmisi" name="transmisi">
                                                         <option selected>Pilih Transmisi ...</option>
@@ -83,6 +89,18 @@
                                                         <option value="mvp">MVP</option>
                                                         <option value="sedan">Sedan</option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="kapasitas_mesin">Kapasitas Mesin</label>
+                                                    <input type="text" id="kapasitas_mesin" class="form-control" name="kapasitas_mesin" placeholder="Masukan Kapasitas Mesin">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="warna">Warna</label>
+                                                    <input type="text" id="warna" class="form-control" name="warna" placeholder="Masukan warna mobil">
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -131,8 +149,11 @@
                         <th>Merk Mobil</th>
                         <th>Car Category</th>
                         <th>Transmisi</th>
+                        <th>seats</th>
                         <th>Tahun</th>
                         <th>Foto</th>
+                        <th>Kapasitas Mesin</th>
+                        <th>warna</th>
                         <th>Harga per hari</th>
                         <th>Syarat & Ketentuan</th>
                         <th>Action</th>
@@ -150,6 +171,7 @@
                             <td>{{ $car->merk_mobil }}</td>
                             <td>{{ $car->car_category }}</td>
                             <td>{{ $car->transmisi }}</td>
+                            <td>{{ $car->seats }}</td>
                             <td>{{ $car->tahun_mobil }}</td>
                             <td>
                                 @if($car->car_photo)
@@ -158,6 +180,8 @@
                                     No Image
                                 @endif
                             </td>
+                            <td>{{ $car->kapasitas_mesin }}</td>
+                            <td>{{ $car->warna }}</td>
                             <td>{{ $car->price_24jam }}</td>
                             <td>
                                 @if (strlen($car->syarat_ketentuan) > 30)
@@ -228,6 +252,12 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
+                                                                <label for="seats">seats</label>
+                                                                <input type="number" id="seats" class="form-control" name="seats" value="{{ $car->seats }}" placeholder="Masukan jumlah kursi">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
                                                                 <label for="transmisi">Transmisi</label>
                                                                 <select class="form-select" id="transmisi" name="transmisi">
                                                                     <option selected>{{ $car->transmisi }}</option>
@@ -245,6 +275,18 @@
                                                                     <option value="mvp">MVP</option>
                                                                     <option value="sedan">Sedan</option>
                                                                 </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="kapasitas_mesin">Kapasitas Mesin</label>
+                                                                <input type="text" id="kapasitas_mesin" class="form-control" name="kapasitas_mesin" value="{{ $car->kapasitas_mesin }}" placeholder="Masukan Kapasitas Mesin">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="warna">Warna</label>
+                                                                <input type="text" id="warna" class="form-control" name="warna" value="{{ $car->warna }}" placeholder="Masukan Warna Mobil">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
