@@ -65,10 +65,16 @@
                         <span>Car Recommendations</span>
                     </a>
                 </li>
-                <li class="sidebar-item {{ ($title === "Data Promo") ? 'active' : ''}}">
-                    <a href="/data-promo" class='sidebar-link'>
-                        <i class="bi bi-ticket-detailed"></i>
-                        <span>Data Promo</span>
+                <li class="sidebar-item {{ ($title === "Data Content") ? 'active' : ''}}">
+                    <a href="/data-content" class='sidebar-link'>
+                        <i class="bi bi-journals"></i>
+                        <span>Data Content</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ ($title === "Syarat & Ketentuan") ? 'active' : ''}}">
+                    <a href="/data-syaratketentuan" class='sidebar-link'>
+                        <i class="bi bi-card-checklist"></i>
+                        <span>Syarat & Ketentuan </span>
                     </a>
                 </li>
                 <li class="sidebar-title">Transaction</li>

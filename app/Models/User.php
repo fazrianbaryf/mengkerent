@@ -18,10 +18,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name', 'username', 'email', 'role', 'gender', 'no_telfon', 'pekerjaan', 'alamat', 'password',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,7 +43,7 @@ class User extends Authenticatable
 
     public function getRoleDisplayAttribute()
     {
-        return $this->role === 1 ? 'Admin' : 'User';
+        return $this->role === 'admin' ? 'Admin' : 'User';
     }
 
     // Method to check if the user is an admin

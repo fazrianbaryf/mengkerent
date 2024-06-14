@@ -2,11 +2,11 @@
     <footer>
         <div class="footer clearfix mb-0 text-muted">
             <div class="float-start">
-                <p>2024 &copy; FazrianB</p>
+                <p>2024 &copy; Mazer</p>
             </div>
             <div class="float-end">
                 <p>WebApps <span class="text-danger"><i></i></span> by <a
-                        href="https://fazrianbaryf.sipelantis.com">FazrianB</a></p>
+                        href="https://mengkerent.id">mengkerent.id</a></p>
             </div>
         </div>
     </footer>

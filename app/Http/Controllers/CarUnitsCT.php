@@ -17,10 +17,12 @@ class CarUnitsCT extends Controller
             'tahun_mobil' => 'required|integer',
             'transmisi' => 'required|in:matic,manual',
             'car_category' => 'required|in:suv,mvp,sedan',
+            'seats' => 'required|integer',
+            'kapasitas_mesin' => 'required|string|max:50',
+            'warna' => 'required|string|max:50',
             'price_6jam' => 'required|integer',
             'price_12jam' => 'required|integer',
             'price_24jam' => 'required|integer',
-            'syarat_ketentuan' => 'required|string|max:500',
         ]);
 
         // Mengupload file gambar
@@ -37,46 +39,85 @@ class CarUnitsCT extends Controller
             'tahun_mobil' => $request->tahun_mobil,
             'transmisi' => $request->transmisi,
             'car_category' => $request->car_category,
+            'seats' => $request->seats,
+            'kapasitas_mesin' => $request->kapasitas_mesin,
+            'warna' => $request->warna,
             'price_6jam' => $request->price_6jam,
             'price_12jam' => $request->price_12jam,
             'price_24jam' => $request->price_24jam,
-            'syarat_ketentuan' => $request->syarat_ketentuan,
         ]);
 
         return redirect()->back()->with('success', 'Car unit added successfully.');
     }
 
     public function update(Request $request, $id)
-    {
-        $car = CarUnits::find($id);
+{
+    $car = CarUnits::find($id);
 
-        if ($car) {
-            $car->nama_mobil = $request->input('nama_mobil');
-            $car->plat_mobil = $request->input('plat_mobil');
-            $car->merk_mobil = $request->input('merk_mobil');
-            $car->tahun_mobil = $request->input('tahun_mobil');
-            $car->transmisi = $request->input('transmisi');
-            $car->car_category = $request->input('car_category');
-            $car->price_6jam = $request->input('price_6jam');
-            $car->price_12jam = $request->input('price_12jam');
-            $car->price_24jam = $request->input('price_24jam');
-            $car->syarat_ketentuan = $request->input('syarat_ketentuan');
+    if ($car) {
+        $car->nama_mobil = $request->input('nama_mobil');
+        $car->plat_mobil = $request->input('plat_mobil');
+        $car->merk_mobil = $request->input('merk_mobil');
+        $car->tahun_mobil = $request->input('tahun_mobil');
+        $car->transmisi = $request->input('transmisi');
+        $car->car_category = $request->input('car_category');
+        $car->seats = $request->input('seats');
+        $car->kapasitas_mesin = $request->input('kapasitas_mesin');
+        $car->warna = $request->input('warna');
+        $car->price_6jam = $request->input('price_6jam');
+        $car->price_12jam = $request->input('price_12jam');
+        $car->price_24jam = $request->input('price_24jam');
 
-            // Handle file upload for car photo
-            if ($request->hasFile('car_photo')) {
-                $file = $request->file('car_photo');
-                $filename = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('images'), $filename);
-                $car->car_photo = $filename;
-            }
-
-            $car->save();
-
-            return redirect()->route('car.index')->with('success', 'Car updated successfully');
-        } else {
-            return redirect()->route('car.index')->with('error', 'Car not found');
+        // Handle file upload for car photo
+        if ($request->hasFile('car_photo')) {
+            $file = $request->file('car_photo');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('images'), $filename);
+            $car->car_photo = $filename;
         }
+
+        $car->save();
+
+        // Redirect to detail page with the updated car ID
+        return redirect()->route('car-units.show', ['id' => $car->id])->with('success', 'Car updated successfully');
+    } else {
+        return redirect()->route('car.index')->with('error', 'Car not found');
     }
+}
+
+    // public function update(Request $request, $id)
+    // {
+    //     $car = CarUnits::find($id);
+
+    //     if ($car) {
+    //         $car->nama_mobil = $request->input('nama_mobil');
+    //         $car->plat_mobil = $request->input('plat_mobil');
+    //         $car->merk_mobil = $request->input('merk_mobil');
+    //         $car->tahun_mobil = $request->input('tahun_mobil');
+    //         $car->transmisi = $request->input('transmisi');
+    //         $car->car_category = $request->input('car_category');
+    //         $car->seats = $request->input('seats');
+    //         $car->kapasitas_mesin = $request->input('kapasitas_mesin');
+    //         $car->warna = $request->input('warna');
+    //         $car->price_6jam = $request->input('price_6jam');
+    //         $car->price_12jam = $request->input('price_12jam');
+    //         $car->price_24jam = $request->input('price_24jam');
+
+    //         // Handle file upload for car photo
+    //         if ($request->hasFile('car_photo')) {
+    //             $file = $request->file('car_photo');
+    //             $filename = time() . '_' . $file->getClientOriginalName();
+    //             $file->move(public_path('images'), $filename);
+    //             $car->car_photo = $filename;
+    //         }
+
+    //         $car->save();
+
+    //         return redirect()->route('car.index')->with('success', 'Car updated successfully');
+    //     } else {
+    //         return redirect()->route('car.index')->with('error', 'Car not found');
+    //     }
+    // }
 
     public function destroy($id)
     {
@@ -102,4 +143,28 @@ class CarUnitsCT extends Controller
         $cars = CarUnits::all();
         return view('car-units', ['cars' => $cars, "title" => "Car Units", "deskripsi" => "Menambahkan unit mobil baru dan mobil investor ke database"]);
     }
+
+    public function show($id)
+    {
+        // Cari mobil berdasarkan ID
+        $car = CarUnits::findOrFail($id);
+    
+        // Kirim data mobil ke view 'detail-carunits' dengan title
+        return view('detail-carunits', [
+            'title' => 'Car Units',
+            'car' => $car
+        ]);
+    }
+    
+
+        /** Api show */
+        public function showApi() {
+            $carunits = CarUnits::all();
+    
+            return response()->json([
+                'message' => 'data mobil',
+                'data' => $carunits
+            ], 200);
+        }
+    
 }
