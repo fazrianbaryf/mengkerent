@@ -22,10 +22,13 @@ return new class extends Migration
             $table->enum('transmisi',['matic','manual']);
             $table->enum('car_category',['suv','mvp','sedan']);
             $table->string('car_photo')->nullable();
+            $table->integer('seats');
+            $table->string('kapasitas_mesin', 50);
+            $table->string('warna', 50);
             $table->integer('price_6jam');
             $table->integer('price_12jam');
             $table->integer('price_24jam');
-            $table->string('syarat_ketentuan', 500);
+            $table->enum('status', ['tersedia', 'proses', 'diterima', 'selesai'])->default('tersedia');
             $table->date('expired_at')->nullable();
             $table->timestamps();
         });

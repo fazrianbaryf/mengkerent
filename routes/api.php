@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\CarUnitsCT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserLoginCT; 
+use App\Http\Controllers\UserRegisterCT;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('register', [UserRegisterCT::class, 'register']);
+Route::post('login', [UserLoginCT::class, 'login']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:sanctum')->get('carunits', [CarUnitsCT::class, 'showApi']);

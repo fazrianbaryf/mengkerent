@@ -18,10 +18,13 @@ class CarUnits extends Model
         'transmisi',
         'car_category',
         'car_photo',
+        'seats',
+        'kapasitas_mesin',
+        'warna',
         'price_6jam',
         'price_12jam',
         'price_24jam',
-        'syarat_ketentuan',
+        'status',
     ];
     
     public function getCarCategoryAttribute($value)

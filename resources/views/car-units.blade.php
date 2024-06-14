@@ -14,7 +14,6 @@
                     <i class="bi bi-plus-square"></i>
                     Tambah Unit Mobil 
                 </button>
-
                 <!--Success theme Modal -->
                 <div class="modal fade text-left" id="success" tabindex="-1" role="dialog"
                     aria-labelledby="myModalLabel110" aria-hidden="true">
@@ -66,6 +65,12 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
+                                                    <label for="seats">Seats</label>
+                                                    <input type="number" id="seats" class="form-control" name="seats" placeholder="Masukan jumlah kursi">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
                                                     <label for="transmisi">Transmisi</label>
                                                     <select class="form-select" id="transmisi" name="transmisi">
                                                         <option selected>Pilih Transmisi ...</option>
@@ -87,6 +92,18 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
+                                                    <label for="kapasitas_mesin">Kapasitas Mesin</label>
+                                                    <input type="text" id="kapasitas_mesin" class="form-control" name="kapasitas_mesin" placeholder="Masukan Kapasitas Mesin">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="warna">Warna</label>
+                                                    <input type="text" id="warna" class="form-control" name="warna" placeholder="Masukan warna mobil">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
                                                     <label for="price_6jam">Harga Mobil 6 Jam</label>
                                                     <input type="number" id="price_6jam" class="form-control" name="price_6jam" placeholder="Masukan Harga Mobil">
                                                 </div>
@@ -101,12 +118,6 @@
                                                 <div class="form-group">
                                                     <label for="price_24jam">Harga Mobil 24 Jam / Per-hari</label>
                                                     <input type="number" id="price_24jam" class="form-control" name="price_24jam" placeholder="Masukan Harga Mobil">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="syarat_ketentuan">Syarat & Ketentuan</label>
-                                                    <textarea id="syarat_ketentuan" class="form-control" name="syarat_ketentuan" placeholder="Masukan syarat dan ketentuan"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -128,13 +139,12 @@
                         <th>No</th>
                         <th>Nama Mobil</th>
                         <th>Plat Mobil</th>
-                        <th>Merk Mobil</th>
                         <th>Car Category</th>
-                        <th>Transmisi</th>
-                        <th>Tahun</th>
                         <th>Foto</th>
-                        <th>Harga per hari</th>
-                        <th>Syarat & Ketentuan</th>
+                        <th>Harga 24 Jam</th>
+                        <th>Harga 12 Jam</th>
+                        <th>Harga 6 Jam</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -147,10 +157,7 @@
                             <td>{{ $counter }}</td>
                             <td>{{ $car->nama_mobil }}</td>
                             <td>{{ $car->plat_mobil }}</td>
-                            <td>{{ $car->merk_mobil }}</td>
                             <td>{{ $car->car_category }}</td>
-                            <td>{{ $car->transmisi }}</td>
-                            <td>{{ $car->tahun_mobil }}</td>
                             <td>
                                 @if($car->car_photo)
                                     <img src="{{ asset('images/' . $car->car_photo) }}" alt="Car Photo" width="100px" height="70px">
@@ -158,23 +165,25 @@
                                     No Image
                                 @endif
                             </td>
+                            <td>{{ $car->price_6jam }}</td>
+                            <td>{{ $car->price_12jam }}</td>
                             <td>{{ $car->price_24jam }}</td>
+                            <td>{{ $car->status }}</td>
                             <td>
-                                @if (strlen($car->syarat_ketentuan) > 30)
-                                    {{ substr($car->syarat_ketentuan, 0, 30) . "..." }}
-                                @else
-                                    {{ $car->syarat_ketentuan }}
-                                @endif
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCarModal{{ $car->id }}">Edit</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCarModal{{ $car->id }}">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <a href="{{ route('car-units.show', $car->id) }}" class="btn btn-info">
+                                    <i class="bi bi-eye"></i>
+                                </a>
                                 <form action="{{ route('cars.destroy', $car->id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
                                 </form>
                             </td>
-                            
                             <!-- Modal Edit Car -->
                             <div class="modal fade" id="editCarModal{{ $car->id }}" tabindex="-1" aria-labelledby="editCarModal{{ $car->id }}Label" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -228,6 +237,12 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
+                                                                <label for="seats">seats</label>
+                                                                <input type="number" id="seats" class="form-control" name="seats" value="{{ $car->seats }}" placeholder="Masukan jumlah kursi">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
                                                                 <label for="transmisi">Transmisi</label>
                                                                 <select class="form-select" id="transmisi" name="transmisi">
                                                                     <option selected>{{ $car->transmisi }}</option>
@@ -249,6 +264,18 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
+                                                                <label for="kapasitas_mesin">Kapasitas Mesin</label>
+                                                                <input type="text" id="kapasitas_mesin" class="form-control" name="kapasitas_mesin" value="{{ $car->kapasitas_mesin }}" placeholder="Masukan Kapasitas Mesin">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="warna">Warna</label>
+                                                                <input type="text" id="warna" class="form-control" name="warna" value="{{ $car->warna }}" placeholder="Masukan Warna Mobil">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
                                                                 <label for="price_6jam">Harga Mobil 6 Jam</label>
                                                                 <input type="number" id="price_6jam" class="form-control" name="price_6jam" value="{{ $car->price_6jam }}" placeholder="Masukan Harga Mobil">
                                                             </div>
@@ -265,16 +292,11 @@
                                                                 <input type="number" id="price_24jam" class="form-control" name="price_24jam" value="{{ $car->price_24jam }}" placeholder="Masukan Harga Mobil">
                                                             </div>
                                                         </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label for="syarat_ketentuan">Syarat & Ketentuan</label>
-                                                                <textarea id="syarat_ketentuan" class="form-control" name="syarat_ketentuan" placeholder="Masukan syarat dan ketentuan">{{ $car->syarat_ketentuan }}</textarea>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="submit" class="btn btn-success me-1 mb-1">Submit</button>
+                                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -294,18 +316,5 @@
     </div>
 
 </section>
-
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        document.querySelectorAll('textarea').forEach((textarea) => {
-            textarea.addEventListener('keydown', function(event) {
-                if (event.key === 'Enter') {
-                    event.preventDefault();
-                    this.value += '\n';
-                }
-            });
-        });
-    });
-</script>
 
 @endsection

@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 class UserSeeder extends Seeder
 {
     /**
@@ -14,11 +15,16 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'Administrator',
-            'username' => 'admin',
-            'email' => 'admin@gmail.com',
+            'name' => 'Fazrian Baryfikri',
+            'username' => 'Fazrian',
+            'role' =>'admin',
+            'email' => 'fazrian@gmail.com',
+            'email_verified_at' => Carbon::now(),
             'password' => Hash::make('admin'),
-            'role' => 'admin', // Pastikan kolom 'role' ada di tabel users
+            'gender' => 'laki-laki',
+            'no_telfon' => '081212836177',
+            'pekerjaan' => 'Pengacara',
+            'alamat' => 'JL.Pengepul berlian no 15000'
         ]);
     }
 }

@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->enum('role', ['admin', 'user'])->default('user')->after('email');
+            $table->enum('gender', ['laki-laki', 'perempuan'])->nullable()->after('role');
+            $table->string('no_telfon')->nullable()->after('gender');
+            $table->string('pekerjaan')->nullable()->after('no_telfon');
+            $table->text('alamat')->nullable()->after('pekerjaan');
+            
             //
         });
     }
