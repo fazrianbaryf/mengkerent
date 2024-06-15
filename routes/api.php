@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserLoginCT; 
 use App\Http\Controllers\UserRegisterCT;
+use App\Http\Controllers\OrderCT;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->get('carunits', [CarUnitsCT::class, 'showApi']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('carunits', [CarUnitsCT::class, 'showApi']);
+    Route::post('orders/{car_unit_id}', [OrderCT::class, 'store']);
+
+});
