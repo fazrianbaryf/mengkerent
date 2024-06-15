@@ -13,10 +13,39 @@
     <link rel="stylesheet" href="{{ asset('theme/dist/assets/extensions/simple-datatables/style.css')}}">
     <link rel="stylesheet" href="{{ asset('theme/dist/assets/css/pages/simple-datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('theme/dist/assets/css/shared/iconly.css') }}">
+    <style>
+        #content {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        #content.show {
+            opacity: 1;
+        }
+    </style>
 
 </head>
 
 <body>
+    <div id="loading" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: #ffffffa4; z-index: 9999; display: flex; justify-content: center; align-items: center;">
+        <img src="{{ asset('theme/dist/assets/images/svg-loaders/audio.svg') }}" class="me-4" style="width: 3rem" alt="audio">
+    </div>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            setTimeout(function() {
+                $("#loading").fadeOut(1000, function() { 
+                    $("#content").addClass('show');
+                });
+            }, 650); 
+        });
+
+        $(window).on('beforeunload', function(){
+            $("#content").removeClass('show');
+            $("#loading").fadeIn(1000); 
+        });
+    </script>
+
     <div id="app">
 
         @include('partials.main-sidebar')
@@ -50,9 +79,6 @@
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
-                                <li>
-                                    <h6 class="dropdown-header">Hello, {{ Auth::user()->name }}!</h6>
-                                </li>
                                 <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> My Profile</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i> Settings</a></li>
                                 <hr class="dropdown-divider">
@@ -90,7 +116,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
 
                       @yield('page-content')

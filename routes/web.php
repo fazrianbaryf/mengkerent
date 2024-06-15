@@ -118,6 +118,16 @@ Route::delete('/data-syaratketentuan/delete/{id}', [SyaratKetentuanCT::class, 'd
 
 /** End Routes Data Customer **/
 
+/** Routes Data Order **/
+        Route::get('/data-order', function () {
+        return view('data-order', [
+            "title" => "Data Order",
+        ]);
+    });
+
+
+/** End Routes Data Order **/
+
 
 
 

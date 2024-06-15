@@ -25,7 +25,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="content">Masukan Promo Content</label>
-                                <textarea class="form-control" name="content" id="content" rows="3" required></textarea>
+                                <textarea class="form-control" name="content" id="content" placeholder="Masukan Isi Content" rows="3" required></textarea>
                             </div>
                             <br>
                             <button type="submit" class="btn btn-success me-1 mb-1">New Content</button>

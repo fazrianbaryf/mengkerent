@@ -80,16 +80,19 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Total Rent</h4>
-                    </div>
+                <div class="card border-0 shadow-sm">
                     <div class="card-body">
-                        <div id="chart-profile-visit"></div>
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h5 class="card-title">Hello, {{ Auth::user()->name }}! <br> Selamat Datang di Sistem Admin Mengkerent.id.</h5>
+                                <p class="card-text">"Rahasia happy dalam bekerja itu terkandung dalam satu kata yakni keunggulan. Mengetahui bagaimana kamu melakukan sesuatu dengan baik, berarti kamu menikmatinya." -Pearl Buck</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
+        
     </div>
 </section>
 

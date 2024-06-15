@@ -84,9 +84,15 @@
                         <span>Data Customer</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ ($title === "Data Order") ? 'active' : ''}}">
+                    <a href="/data-order" class='sidebar-link'>
+                        <i class="bi bi-cart-fill"></i>
+                        <span>Data Order</span>
+                    </a>
+                </li>
                 <li class="sidebar-item {{ ($title === "Transaksi Customer") ? 'active' : ''}}">
                     <a href="/transaksi-customer" class='sidebar-link'>
-                        <i class="bi bi-envelope-paper"></i>
+                        <i class="bi bi-cash-coin"></i>
                         <span>Transaksi Customer</span>
                     </a>
                 </li>
