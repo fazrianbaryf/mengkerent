@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class CustomerTransaction extends Model
 {
     use HasFactory;
 
-    protected $table = 'orders';
     protected $fillable = [
         'user_id',
         'customer_name',
@@ -17,8 +16,14 @@ class Order extends Model
         'nama_mobil',
         'plat_mobil',
         'harga',
+        'no_telfon',
         'pelayanan',
         'alamat',
         'status',
     ];
+
+    public function carUnit()
+    {
+        return $this->belongsTo(CarUnits::class, 'car_unit_id');
+    }
 }

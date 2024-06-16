@@ -51,4 +51,6 @@ class CarUnits extends Model
     {
         return $this->hasMany(CarRecomends::class, 'car_recomend_id');
     }
+
+    
 }
