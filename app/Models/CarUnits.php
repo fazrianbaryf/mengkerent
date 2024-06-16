@@ -26,7 +26,25 @@ class CarUnits extends Model
         'price_24jam',
         'status',
     ];
-    
+
+    public function getStatusAttribute($value)
+    {
+        switch ($value) {
+            case 'tersedia':
+                return 'Unit Tersedia';
+                break;
+            case 'proses':
+                return 'Menunggu Konfirmasi';
+                break;
+            case 'diterima':
+                return 'Unit Disewa';
+                break;
+            default:
+                return $value; // Jika tidak ada yang cocok, kembalikan nilai aslinya
+                break;
+        }
+    }
+
     public function getCarCategoryAttribute($value)
     {
         $specialCategories = ['mvp', 'suv'];
@@ -51,6 +69,4 @@ class CarUnits extends Model
     {
         return $this->hasMany(CarRecomends::class, 'car_recomend_id');
     }
-
-    
 }

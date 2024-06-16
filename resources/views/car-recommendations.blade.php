@@ -57,7 +57,6 @@
                             <th>No</th>
                             <th>Nama Mobil</th>
                             <th>Plat Mobil</th>
-                            <th>Car Category</th>
                             <th>Foto</th>
                             <th>Harga 6 Jam</th>
                             <th>Harga 12 Jam</th>
@@ -71,8 +70,6 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $recomend->carUnit->nama_mobil }}</td>
                             <td>{{ $recomend->carUnit->plat_mobil }}</td>
-                            <td>{{ $recomend->carUnit->car_category }}</td>
-
                             <td>
                                 @if($recomend->carUnit->car_photo)
                                 <img src="{{ asset('images/' . $recomend->carUnit->car_photo) }}" width="100" alt="Car Photo">
@@ -80,15 +77,17 @@
                                 No Photo Available
                                 @endif
                             </td>
-                            <td>{{ $recomend->carUnit->price_6jam }}</td>
-                            <td>{{ $recomend->carUnit->price_12jam }}</td>
-                            <td>{{ $recomend->carUnit->price_24jam }}</td>
+                            <td>Rp. {{ number_format($recomend->carUnit->price_6jam, 0, ',', '.') }}</td>
+                            <td>Rp. {{ number_format($recomend->carUnit->price_12jam, 0, ',', '.') }}</td>
+                            <td>Rp. {{ number_format($recomend->carUnit->price_24jam, 0, ',', '.') }}</td>                            
                             <td>
+                                <div class="d-flex align-items-center gap-1">
                                 <form action="{{ route('car_recomend.remove', $recomend->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                 </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

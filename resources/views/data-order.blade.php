@@ -12,9 +12,11 @@
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Customer Name</th>
                             <th>Nama Mobil</th>
                             <th>Plat Mobil</th>
+                            <th>Durasi</th>
                             <th>Harga</th>
                             <th>No. Telfon</th>
                             <th>Pelayanan</th>
@@ -24,28 +26,34 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php $counter = 1; @endphp
                         @foreach ($orders as $order)
                         <tr>
+                            <td>{{ $counter }}</td>
                             <td>{{ $order->customer_name }}</td>
                             <td>{{ $order->nama_mobil }}</td>
                             <td>{{ $order->plat_mobil }}</td>
-                            <td>{{ $order->harga }}</td>
+                            <td>{{ $order->durasi }}</td>
+                            <td>Rp. {{ number_format($order->harga, 0, ',', '.') }}</td>
                             <td>{{ $order->no_telfon }}</td>
                             <td>{{ $order->pelayanan }}</td>
                             <td>{{ $order->alamat }}</td>
                             <td>{{ $order->status }}</td>
                             <td>
+                                <div class="d-flex align-items-center gap-1">
                                 {{-- Form untuk menerima order --}}
                                 <form action="{{ route('orders.accept', $order->id) }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="btn btn-success btn-sm">Terima</button>
+                                    <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-check2"></i></button>
                                 </form>
                                 <form action="{{ route('orders.reject', $order->id) }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm">Ditolak</button>
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-x-lg"></i></button>
                                 </form>
+                                </div>
                             </td>
                         </tr>
+                        @php $counter++; @endphp
                         @endforeach
                     </tbody>
                 </table>

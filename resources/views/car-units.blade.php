@@ -139,7 +139,6 @@
                         <th>No</th>
                         <th>Nama Mobil</th>
                         <th>Plat Mobil</th>
-                        <th>Car Category</th>
                         <th>Foto</th>
                         <th>Harga 6 Jam</th>
                         <th>Harga 12 Jam</th>
@@ -157,7 +156,6 @@
                             <td>{{ $counter }}</td>
                             <td>{{ $car->nama_mobil }}</td>
                             <td>{{ $car->plat_mobil }}</td>
-                            <td>{{ $car->car_category }}</td>
                             <td>
                                 @if($car->car_photo)
                                     <img src="{{ asset('images/' . $car->car_photo) }}" alt="Car Photo" width="100px" height="70px">
@@ -165,25 +163,28 @@
                                     No Image
                                 @endif
                             </td>
-                            <td>{{ $car->price_6jam }}</td>
-                            <td>{{ $car->price_12jam }}</td>
-                            <td>{{ $car->price_24jam }}</td>
+                            <td>Rp. {{ number_format($car->price_6jam, 0, ',', '.') }}</td>
+                            <td>Rp. {{ number_format($car->price_12jam, 0, ',', '.') }}</td>
+                            <td>Rp. {{ number_format($car->price_24jam, 0, ',', '.') }}</td>    
                             <td>{{ $car->status }}</td>
                             <td>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCarModal{{ $car->id }}">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
-                                <a href="{{ route('car-units.show', $car->id) }}" class="btn btn-info">
-                                    <i class="bi bi-eye"></i>
-                                </a>
-                                <form action="{{ route('cars.destroy', $car->id) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="bi bi-trash"></i>
+                                <div class="d-flex align-items-center gap-1">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCarModal{{ $car->id }}">
+                                        <i class="bi bi-pencil-square"></i>
                                     </button>
-                                </form>
+                                    <a href="{{ route('car-units.show', $car->id) }}" class="btn btn-info">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <form action="{{ route('cars.destroy', $car->id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
+                            
                             <!-- Modal Edit Car -->
                             <div class="modal fade" id="editCarModal{{ $car->id }}" tabindex="-1" aria-labelledby="editCarModal{{ $car->id }}Label" aria-hidden="true">
                                 <div class="modal-dialog">

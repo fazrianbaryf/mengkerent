@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('order_histories', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->string('customer_name');
             $table->string('nama_mobil');
             $table->string('plat_mobil');
+            $table->string('durasi');
             $table->integer('harga');
             $table->string('no_telfon');
             $table->string('pelayanan');
