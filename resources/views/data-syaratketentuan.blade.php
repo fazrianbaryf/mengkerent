@@ -83,6 +83,7 @@
                             <td>{{ $item->jenis_syarat }}</td>
                             <td class="syarat-ketentuan">{{ $item->syarat_ketentuan }}</td>
                             <td class="action-buttons">
+                                <div class="d-flex align-items-center gap-1">
                                 <!-- Edit Button -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id }}"><i class="bi bi-pencil-square"></i></button>
                                 <!-- Edit Modal -->
@@ -123,6 +124,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                 </form>
+                                </div>
                             </td>
                         </tr>
                         @php $counter++; @endphp

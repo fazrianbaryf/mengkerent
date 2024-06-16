@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-12 col-md-6 mb-3">
                         <label class="form-label"><strong>Kapasitas Mesin</strong></label>
-                        <p class="form-control-plaintext">{{ $car->kapasitas_mesin }}</p>
+                        <p class="form-control-plaintext">{{ $car->kapasitas_mesin }} CC</p>
                     </div>
                     <div class="col-12 col-md-6 mb-3">
                         <label class="form-label"><strong>Transmisi</strong></label>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-12 col-md-6 mb-3">
                         <label class="form-label"><strong>Harga 6 Jam</strong></label>
-                        <p class="form-control-plaintext">Rp. {{ $car->price_6jam }}</p>
+                        <p class="form-control-plaintext">Rp. {{ number_format($car->price_6jam, 0, ',', '.') }}</p>
                     </div>
                     <div class="col-12 col-md-6 mb-3">
                         <label class="form-label"><strong>Tahun Mobil</strong></label>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-12 col-md-6 mb-3">
                         <label class="form-label"><strong>Harga 12 Jam</strong></label>
-                        <p class="form-control-plaintext">Rp. {{ $car->price_12jam }}</p>
+                        <p class="form-control-plaintext">Rp. {{ number_format($car->price_12jam, 0, ',', '.') }}</p>
                     </div>
                     <div class="col-12 col-md-6 mb-3">
                         <label class="form-label"><strong>Seats</strong></label>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-12 col-md-6 mb-3">
                         <label class="form-label"><strong>Harga 24 Jam</strong></label>
-                        <p class="form-control-plaintext">Rp. {{ $car->price_24jam }}</p>
+                        <p class="form-control-plaintext">Rp. {{ number_format($car->price_24jam, 0, ',', '.') }}</p>
                     </div>
                     <div class="col-12 mb-3">
                         <label class="form-label"><strong>Status</strong></label>

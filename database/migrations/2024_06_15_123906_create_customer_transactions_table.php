@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('car_unit_id');
             $table->string('nama_mobil');
             $table->string('plat_mobil');
+            $table->string('durasi');
             $table->integer('harga');
             $table->string('no_telfon');
             $table->string('pelayanan');

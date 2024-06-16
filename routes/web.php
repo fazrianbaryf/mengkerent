@@ -7,6 +7,7 @@ use App\Http\Controllers\CarRecomendsCT;
 use App\Http\Controllers\dataCustomerCT;
 use App\Http\Controllers\syaratKetentuanCT;
 use App\Http\Controllers\ContentCT;
+use App\Http\Controllers\dashboardCT;
 use App\Http\Controllers\OrderCT;
 use App\Http\Controllers\OrderHistoryCT;
 use App\Http\Controllers\TransaksiCT;
@@ -35,6 +36,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard', ["title" => "Dashboard"]);
     });
+
+    // dashboard
+    Route::get('/dashboard', [dashboardCT::class, 'index'])->name('users.index');
 
 /** Routes yang mengakses car units **/
     Route::get('/car-units', function () {
