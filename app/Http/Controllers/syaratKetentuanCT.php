@@ -26,7 +26,7 @@ class SyaratKetentuanCT extends Controller
             'syarat_ketentuan' => $request->syarat_ketentuan,
         ]);
 
-        return redirect()->back()->with('success', 'Syarat & Ketentuan berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Syarat Dan Ketentuan berhasil ditambahkan.');
     }
 
     public function update(Request $request, $id)
@@ -42,7 +42,7 @@ class SyaratKetentuanCT extends Controller
             'syarat_ketentuan' => $request->syarat_ketentuan,
         ]);
 
-        return redirect()->back()->with('success', 'Syarat & Ketentuan berhasil diupdate');
+        return redirect()->back()->with('success', 'Syarat Dan Ketentuan berhasil diupdate.');
     }
 
     public function delete($id)
@@ -50,6 +50,6 @@ class SyaratKetentuanCT extends Controller
         $syaratKetentuan = SyaratKetentuan::findOrFail($id);
         $syaratKetentuan->delete();
 
-        return redirect()->back()->with('success', 'Syarat & Ketentuan berhasil dihapus');
+        return redirect()->back()->with('error', 'Syarat Dan Ketentuan berhasil dihapus.');
     }
 }
