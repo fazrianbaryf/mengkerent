@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('theme/dist/assets/extensions/simple-datatables/style.css')}}">
     <link rel="stylesheet" href="{{ asset('theme/dist/assets/css/pages/simple-datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('theme/dist/assets/css/shared/iconly.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/dist/assets/extensions/sweetalert2/sweetalert2.min.css') }}">
     <style>
         #content {
             opacity: 0;
@@ -26,23 +27,23 @@
 </head>
 
 <body>
-    <div id="loading" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: #ffffffa4; z-index: 9999; display: flex; justify-content: center; align-items: center;">
-        <img src="{{ asset('theme/dist/assets/images/svg-loaders/audio.svg') }}" class="me-4" style="width: 3rem" alt="audio">
+    <div id="loading" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: #ffffff62; z-index: 9999; display: flex; justify-content: center; align-items: center;">
+        <img src="{{ asset('theme/dist/assets/images/svg-loaders/circles.svg') }}" class="me-4" style="width: 3rem" alt="audio">
     </div>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function(){
             setTimeout(function() {
-                $("#loading").fadeOut(1000, function() { 
+                $("#loading").fadeOut(100, function() { 
                     $("#content").addClass('show');
                 });
-            }, 650); 
+            }, 100); 
         });
 
         $(window).on('beforeunload', function(){
             $("#content").removeClass('show');
-            $("#loading").fadeIn(1000); 
+            $("#loading").fadeIn(100); 
         });
     </script>
 

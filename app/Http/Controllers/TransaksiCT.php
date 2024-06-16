@@ -49,6 +49,6 @@ class TransaksiCT extends Controller
             $carUnit->save();
         }
 
-        return back()->with('success', 'Transaction completed and moved to order history successfully.');
+        return back()->with('success', 'Transaksi selesai mobil sudah bisa disewa kembali.');
     }
 }

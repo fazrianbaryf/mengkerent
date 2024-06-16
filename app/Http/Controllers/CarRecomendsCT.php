@@ -42,7 +42,7 @@ class CarRecomendsCT extends Controller
             'car_recomend_id' => $request->car_recomend_id,
         ]);
 
-        return redirect()->back()->with('success', 'Car added to recommendations successfully.');
+        return redirect()->back()->with('success', 'Car recommendation berhasil ditambahkan.');
     }
 
     public function removeCarRecomend($id)
@@ -51,9 +51,9 @@ class CarRecomendsCT extends Controller
 
         if ($carRecomend) {
             $carRecomend->delete();
-            return redirect()->back()->with('success', 'Car recommendation removed successfully.');
+            return redirect()->back()->with('error', 'Car recommendation berhasil dihapus.');
         }
 
-        return redirect()->back()->with('error', 'Car recommendation not found.');
+        return redirect()->back()->with('warning', 'Car recommendation not found.');
     }
 }
