@@ -141,7 +141,7 @@ class CarUnitsCT extends Controller
     public function index()
     {
         $cars = CarUnits::all();
-        return view('car-units', ['cars' => $cars, "title" => "Car Units", "deskripsi" => "Menambahkan unit mobil baru dan mobil investor ke database"]);
+        return view('car-units', ['cars' => $cars, "title" => "Car Units"]);
     }
 
     public function show($id)

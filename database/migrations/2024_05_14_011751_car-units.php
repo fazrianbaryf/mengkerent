@@ -28,7 +28,7 @@ return new class extends Migration
             $table->integer('price_6jam');
             $table->integer('price_12jam');
             $table->integer('price_24jam');
-            $table->enum('status', ['tersedia', 'proses', 'diterima', 'dibatalkan', 'selesai'])->default('tersedia');
+            $table->enum('status', ['tersedia', 'proses', 'diterima'])->default('tersedia');
             $table->date('expired_at')->nullable();
             $table->timestamps();
         });

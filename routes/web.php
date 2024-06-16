@@ -7,6 +7,9 @@ use App\Http\Controllers\CarRecomendsCT;
 use App\Http\Controllers\dataCustomerCT;
 use App\Http\Controllers\syaratKetentuanCT;
 use App\Http\Controllers\ContentCT;
+use App\Http\Controllers\OrderCT;
+use App\Http\Controllers\OrderHistoryCT;
+use App\Http\Controllers\TransaksiCT;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,6 +107,10 @@ Route::delete('/data-syaratketentuan/delete/{id}', [SyaratKetentuanCT::class, 'd
             "title" => "Transaksi Customer",
         ]);
     });
+
+    Route::get('/transaksi-customer', [TransaksiCT::class, 'index'])->name('customer.transactions');
+    Route::post('/transactions/{id}/complete', [TransaksiCT::class, 'completeTransaction'])->name('transactions.complete');
+
     
 /** Routes Transaksi Customer **/
 
@@ -125,6 +132,11 @@ Route::delete('/data-syaratketentuan/delete/{id}', [SyaratKetentuanCT::class, 'd
         ]);
     });
 
+    Route::get('/data-order', [OrderCT::class, 'index'])->name('orders.index');
+    Route::post('/orders/{order}/accept', [OrderCT::class, 'accept'])->name('orders.accept');
+    Route::post('/orders/{id}/reject', [OrderCT::class, 'reject'])->name('orders.reject');
+
+
 
 /** End Routes Data Order **/
 
@@ -138,6 +150,7 @@ Route::delete('/data-syaratketentuan/delete/{id}', [SyaratKetentuanCT::class, 'd
         ]);
     });
 
+    Route::get('/order-history', [OrderHistoryCT::class, 'index'])->name('order.histories.index');
 
 /** End Routes Order Histori **/
 

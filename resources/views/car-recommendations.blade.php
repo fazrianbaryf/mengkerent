@@ -59,9 +59,9 @@
                             <th>Plat Mobil</th>
                             <th>Car Category</th>
                             <th>Foto</th>
-                            <th>Harga 24 Jam</th>
-                            <th>Harga 12 Jam</th>
                             <th>Harga 6 Jam</th>
+                            <th>Harga 12 Jam</th>
+                            <th>Harga 24 Jam</th>
                             <th>Action</th>
                         </tr>
                     </thead>

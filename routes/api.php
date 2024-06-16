@@ -28,5 +28,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('carunits', [CarUnitsCT::class, 'showApi']);
     Route::post('orders/{car_unit_id}', [OrderCT::class, 'store']);
-
+    Route::delete('order/{order_id}/cancel', [OrderCT::class, 'cancelOrder']);
 });
