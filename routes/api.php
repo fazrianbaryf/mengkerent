@@ -7,6 +7,7 @@ use App\Http\Controllers\UserLoginCT;
 use App\Http\Controllers\UserRegisterCT;
 use App\Http\Controllers\OrderCT;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CarRecomendsCT;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('carunits', [CarUnitsCT::class, 'showApi']);
     Route::post('orders/{car_unit_id}', [OrderCT::class, 'store']);
     Route::delete('order/{order_id}/cancel', [OrderCT::class, 'cancelOrder']);
-
+    Route::get('car-recommendations', [CarRecomendsCT::class, 'index']);
+    Route::get('carunits/{id}', [CarUnitsCT::class, 'showApiById']);
     Route::get('/users/{id}', [UserController::class, 'show']);
     Route::put('/users/{id}', [UserController::class, 'update']);
     
