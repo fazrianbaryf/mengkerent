@@ -8,11 +8,23 @@ use App\Models\CarRecomends;
 
 class CarRecomendsCT extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $carUnits = CarUnits::all();
         $recommendedCars = CarRecomends::with('carUnit')->get();
 
+        // Check if the request expects a JSON response
+        if ($request->is('api/*')) {
+            return response()->json([
+                'status' => 'success',
+                'data' => [
+                    'carUnits' => $carUnits,
+                    'recommendedCars' => $recommendedCars,
+                ],
+            ]);
+        }
+
+        // Default behavior for non-API requests
         return view('car-recommendations',  [
             'title' => 'Car Recommendations',
             'carUnits' => $carUnits,

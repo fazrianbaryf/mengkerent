@@ -166,5 +166,19 @@ class CarUnitsCT extends Controller
                 'data' => $carunits
             ], 200);
         }
-    
-}
+        public function showApiById($id)
+    {
+        try {
+            $carunit = CarUnits::findOrFail($id);
+
+            return response()->json([
+                'message' => 'Detail mobil',
+                'data' => $carunit
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Data mobil tidak ditemukan'
+            ], 404);
+        }
+    } 
+}  

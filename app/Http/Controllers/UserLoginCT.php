@@ -55,6 +55,14 @@ class UserLoginCT extends Controller
         }
 
         $user = Auth::user();
+
+        // Check user role
+        if ($user->role !== 'user') {
+            return response()->json([
+                'message' => 'Unauthorized. Only users can login.'
+            ], 403);
+        }
+
         $token = $user->createToken('API Token')->plainTextToken;
 
         return response()->json([
