@@ -45,7 +45,7 @@ class OrderCT extends Controller
             $carUnit->save();
         }
 
-        return back()->with('success', 'Order accepted and moved to customer transactions successfully.');
+        return back()->with('success', 'Order customer berhasil diterima.');
     }
 
     public function store(Request $request, $car_unit_id)
@@ -98,32 +98,35 @@ class OrderCT extends Controller
     }
 
     public function reject($id, Request $request)
-    {
-        $order = Order::findOrFail($id);
+{
+    $order = Order::findOrFail($id);
 
-        OrderHistory::create([
-            'user_id' => Auth::id(),
-            'customer_name' => $order->customer_name,
-            'nama_mobil' => $order->nama_mobil,
-            'plat_mobil' => $order->plat_mobil,
-            'durasi' => $order->durasi, // Menyimpan durasi ke order history
-            'harga' => $order->harga,
-            'no_telfon' => $order->no_telfon,
-            'pelayanan' => $order->pelayanan,
-            'alamat' => $order->alamat,
-            'status' => 'ditolak'
-        ]);
+    // Simpan pesanan ke OrderHistory dengan status ditolak
+    OrderHistory::create([
+        'user_id' => $order->user_id,
+        'customer_name' => $order->customer_name,
+        'nama_mobil' => $order->nama_mobil,
+        'plat_mobil' => $order->plat_mobil,
+        'durasi' => $order->durasi,
+        'harga' => $order->harga,
+        'no_telfon' => $order->no_telfon,
+        'pelayanan' => $order->pelayanan,
+        'alamat' => $order->alamat,
+        'status' => 'ditolak'
+    ]);
 
-        $order->delete();
+    // Hapus pesanan asli dari tabel Order
+    $order->delete();
 
-        $carUnit = CarUnits::find($order->car_unit_id);
-        if ($carUnit) {
-            $carUnit->status = 'tersedia';
-            $carUnit->save();
-        }
-
-        return back()->with('success', 'Order rejected and moved to order history successfully.');
+    // Ubah status CarUnit jika diperlukan
+    $carUnit = CarUnits::find($order->car_unit_id);
+    if ($carUnit) {
+        $carUnit->status = 'tersedia';
+        $carUnit->save();
     }
+
+    return back()->with('success', 'Order rejected and moved to order history successfully.');
+}
 
     public function cancelOrder($order_id)
     {

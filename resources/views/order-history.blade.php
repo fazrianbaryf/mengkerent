@@ -25,10 +25,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php $counter = 1; @endphp
                         @foreach ($orderHistories as $history)
                         <tr>
-                            <td>{{ $counter }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $history->customer_name }}</td>
                             <td>{{ $history->nama_mobil }}</td>
                             <td>{{ $history->plat_mobil }}</td>
@@ -39,7 +38,6 @@
                             <td>{{ $history->alamat }}</td>
                             <td>{{ $history->status }}</td>
                         </tr>
-                        @php $counter++; @endphp
                         @endforeach
                     </tbody>
                 </table>

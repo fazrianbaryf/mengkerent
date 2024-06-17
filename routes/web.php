@@ -152,9 +152,11 @@ Route::delete('/data-syaratketentuan/delete/{id}', [SyaratKetentuanCT::class, 'd
         return view('order-history', [
             "title" => "Order History",
         ]);
-    });
+    })->name('order.history.view');
 
     Route::get('/order-history', [OrderHistoryCT::class, 'index'])->name('order.histories.index');
+    Route::get('/order-history/{userId}', [OrderHistoryCT::class, 'showByUserId'])->name('order.histories.showByUserId');
+
 
 /** End Routes Order Histori **/
 
