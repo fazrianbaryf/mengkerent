@@ -21,15 +21,19 @@ class ContentCT extends Controller
             'content' => 'required|string',
         ]);
 
-        // Hapus semua promo yang sudah ada
-        Promo::truncate();
-
-        // Buat promo baru
-        Promo::create([
-            'title' => $request->title,
-            'content' => $request->content,
-        ]);
-
-        return redirect()->back()->with('success', 'Data content berhasil ditambahkan');
+        try {
+            // Hapus semua promo yang sudah ada
+            Promo::truncate();
+    
+            // Buat promo baru
+            Promo::create([
+                'title' => $request->title,
+                'content' => $request->content,
+            ]);
+    
+            return redirect()->back()->with('success', 'Data content berhasil diupdate.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat update data content.');
+        }
     }
 }

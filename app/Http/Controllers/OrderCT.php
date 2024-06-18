@@ -125,7 +125,7 @@ class OrderCT extends Controller
         $carUnit->save();
     }
 
-    return back()->with('success', 'Order rejected and moved to order history successfully.');
+    return back()->with('info', 'Order customer ditolak karena tidak sesuai syarat dan ketentuan.');
 }
 
     public function cancelOrder($order_id)

@@ -25,29 +25,33 @@ class CarUnitsCT extends Controller
             'price_24jam' => 'required|integer',
         ]);
 
-        // Mengupload file gambar
-        $imageName = time().'.'.$request->car_photo->extension();  
-        $request->car_photo->move(public_path('images'), $imageName);
-
-        // Menyimpan data ke database
-        CarUnits::create([
-            'car_photo' => $imageName,
-            'nama_mobil' => $request->nama_mobil,
-            'plat_mobil' => $request->plat_mobil,
-            'merk_mobil' => $request->merk_mobil,
-            'jenis_mobil' => $request->jenis_mobil,
-            'tahun_mobil' => $request->tahun_mobil,
-            'transmisi' => $request->transmisi,
-            'car_category' => $request->car_category,
-            'seats' => $request->seats,
-            'kapasitas_mesin' => $request->kapasitas_mesin,
-            'warna' => $request->warna,
-            'price_6jam' => $request->price_6jam,
-            'price_12jam' => $request->price_12jam,
-            'price_24jam' => $request->price_24jam,
-        ]);
-
-        return redirect()->back()->with('success', 'Car unit added successfully.');
+        try {
+            // Mengupload file gambar
+            $imageName = time().'.'.$request->car_photo->extension();  
+            $request->car_photo->move(public_path('images'), $imageName);
+    
+            // Menyimpan data ke database
+            CarUnits::create([
+                'car_photo' => $imageName,
+                'nama_mobil' => $request->nama_mobil,
+                'plat_mobil' => $request->plat_mobil,
+                'merk_mobil' => $request->merk_mobil,
+                'jenis_mobil' => $request->jenis_mobil,
+                'tahun_mobil' => $request->tahun_mobil,
+                'transmisi' => $request->transmisi,
+                'car_category' => $request->car_category,
+                'seats' => $request->seats,
+                'kapasitas_mesin' => $request->kapasitas_mesin,
+                'warna' => $request->warna,
+                'price_6jam' => $request->price_6jam,
+                'price_12jam' => $request->price_12jam,
+                'price_24jam' => $request->price_24jam,
+            ]);
+    
+            return redirect()->back()->with('success', 'Car unit berhasil di tambahkan.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('warning', 'Error Saat Menambah Car Unit, Periksa Kembali!');
+        }
     }
 
     public function update(Request $request, $id)
@@ -79,9 +83,9 @@ class CarUnitsCT extends Controller
         $car->save();
 
         // Redirect to detail page with the updated car ID
-        return redirect()->route('car-units.show', ['id' => $car->id])->with('success', 'Car updated successfully');
+        return redirect()->route('car-units.show', ['id' => $car->id])->with('success', 'Car unit berhasil diedit.');
     } else {
-        return redirect()->route('car.index')->with('error', 'Car not found');
+        return redirect()->route('car.index')->with('warning', 'Car not found');
     }
 }
 
@@ -124,7 +128,7 @@ class CarUnitsCT extends Controller
         $car = CarUnits::find($id);
     
         if (!$car) {
-            return redirect()->back()->with('error', 'Car unit not found.');
+            return redirect()->back()->with('warning', 'Car unit not found.');
         }
     
         // Hapus gambar dari server
@@ -135,7 +139,7 @@ class CarUnitsCT extends Controller
         // Hapus data mobil dari database
         $car->delete();
     
-        return redirect()->back()->with('success', 'Car unit deleted successfully.');
+        return redirect()->back()->with('success', 'Car unit berhasil dihapus.');
     }    
     
     public function index()
