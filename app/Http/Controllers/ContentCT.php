@@ -36,4 +36,5 @@ class ContentCT extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan saat update data content.');
         }
     }
+    
 }

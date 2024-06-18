@@ -53,6 +53,7 @@ class CarUnitsCT extends Controller
             return redirect()->back()->with('warning', 'Error Saat Menambah Car Unit, Periksa Kembali!');
         }
     }
+    
 
     public function update(Request $request, $id)
 {
@@ -139,7 +140,7 @@ class CarUnitsCT extends Controller
         // Hapus data mobil dari database
         $car->delete();
     
-        return redirect()->back()->with('success', 'Car unit berhasil dihapus.');
+
     }    
     
     public function index()
