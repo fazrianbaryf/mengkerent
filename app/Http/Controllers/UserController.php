@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\CustomerTransaction;
+use App\Models\OrderHistory;
 
 class UserController extends Controller
 {
@@ -75,4 +78,34 @@ class UserController extends Controller
 
         return response()->json(['user' => $user], 200);
     }
+
+    /**
+     * Mengambil transaksi berdasarkan user ID.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getUserTransactions($id)
+{
+    // Ambil transaksi booking (status belum dikonfirmasi admin)
+    $bookingTransactions = Order::where('user_id', $id)
+                                ->whereIn('status', ['proses'])
+                                ->get();
+
+    // Ambil transaksi Menunggu Konfirmasi (status sudah dikonfirmasi admin)
+    $prosesTransactions = CustomerTransaction::where('user_id', $id)
+                                             ->where('status', 'Menunggu Konfirmasi')
+                                             ->get();
+
+    // Ambil semua histori transaksi tanpa filter status
+    $allHistoryTransactions = OrderHistory::where('user_id', $id)
+                                         ->whereIn('status', ['selesai','reject', 'dicancel'])
+                                         ->get();
+
+    return response()->json([
+        'booking' => $bookingTransactions,
+        'proses' => $prosesTransactions,
+        'selesai' => $allHistoryTransactions
+    ]);
+}
 }

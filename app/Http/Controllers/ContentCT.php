@@ -20,7 +20,7 @@ class ContentCT extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
         ]);
-    
+
         try {
             // Hapus semua promo yang sudah ada
             Promo::truncate();

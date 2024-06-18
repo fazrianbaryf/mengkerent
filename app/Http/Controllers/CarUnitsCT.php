@@ -24,7 +24,7 @@ class CarUnitsCT extends Controller
             'price_12jam' => 'required|integer',
             'price_24jam' => 'required|integer',
         ]);
-    
+
         try {
             // Mengupload file gambar
             $imageName = time().'.'.$request->car_photo->extension();  
@@ -140,7 +140,7 @@ class CarUnitsCT extends Controller
         // Hapus data mobil dari database
         $car->delete();
     
-        return redirect()->back()->with('error', 'Car unit berhasil dihapus.');
+
     }    
     
     public function index()

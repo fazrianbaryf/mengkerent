@@ -98,32 +98,11 @@ class OrderCT extends Controller
     }
 
     public function reject($id, Request $request)
-    {
-        $order = Order::findOrFail($id);
 
-        OrderHistory::create([
-            'user_id' => Auth::id(),
-            'customer_name' => $order->customer_name,
-            'nama_mobil' => $order->nama_mobil,
-            'plat_mobil' => $order->plat_mobil,
-            'durasi' => $order->durasi, // Menyimpan durasi ke order history
-            'harga' => $order->harga,
-            'no_telfon' => $order->no_telfon,
-            'pelayanan' => $order->pelayanan,
-            'alamat' => $order->alamat,
-            'status' => 'ditolak'
-        ]);
-
-        $order->delete();
-
-        $carUnit = CarUnits::find($order->car_unit_id);
-        if ($carUnit) {
-            $carUnit->status = 'tersedia';
-            $carUnit->save();
-        }
-
-        return back()->with('info', 'Order customer ditolak karena tidak sesuai syarat dan ketentuan.');
     }
+
+    return back()->with('info', 'Order customer ditolak karena tidak sesuai syarat dan ketentuan.');
+}
 
     public function cancelOrder($order_id)
     {
