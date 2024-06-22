@@ -52,4 +52,13 @@ class SyaratKetentuanCT extends Controller
 
         return redirect()->back()->with('success', 'Syarat & Ketentuan berhasil dihapus');
     }
+
+    public function getTerms()
+    {
+        $syaratKetentuan = SyaratKetentuan::all();
+        return response()->json([
+            'status' => 'success',
+            'data' => $syaratKetentuan,
+        ]);
+    }
 }

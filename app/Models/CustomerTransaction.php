@@ -29,7 +29,7 @@ class CustomerTransaction extends Model
                 return 'Unit Tersedia';
                 break;
             case 'proses':
-                return 'Menunggu Konfirmasi';
+                return 'Selesai';
                 break;
             case 'diterima':
                 return 'Unit Disewa';

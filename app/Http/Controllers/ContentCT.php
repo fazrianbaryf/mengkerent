@@ -7,11 +7,24 @@ use App\Models\Promo;
 
 class ContentCT extends Controller
 {
-    public function index()
+
+    public function index(Request $request)
     {
-        $promo = Promo::all(); // Retrieve all promos
-        $title = "Data Content";
-        return view('data-content', compact('promo', 'title'));
+        $promos = Promo::all(); // Mengambil semua promo
+
+        // Memeriksa jika permintaan adalah JSON (API)
+        if ($request->expectsJson()) {
+            return response()->json([
+                'status' => 'success',
+                'data' => $promos,
+            ]);
+        }
+
+        // Default untuk permintaan non-API
+        return view('data-content', [
+            'promo' => $promos,
+            'title' => 'Data Content'
+        ]);
     }
 
     public function store(Request $request)

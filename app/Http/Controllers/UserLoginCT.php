@@ -32,12 +32,10 @@ class UserLoginCT extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
+        $user = $request->user();
+        $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/login');
+        return response()->json(['message' => 'Logged out successfully'], 200);
     }
 
     // API login method
